@@ -1,0 +1,28 @@
+## configuration file for "find_duplicated_images.py" ##
+# NOTE: All fields are required.
+
+INPUT:
+
+  # An input CSV file with columns of file paths and group and serialized datetime.
+  GROUPED_FILE_PATHS_LIST_CSV:
+    PATH: './data/file_paths_list_grouped_by_its_name.csv'
+    ENCODING: 'utf-8'
+    GROUP_COLUMN: 'group'
+    FILE_PATHS_LIST_COLUMN: 'file_paths'
+    DATETIME_SERIAL_COLUMN: 'datetime_local_unix'
+
+OUTPUT:
+
+  # An output CSV file with columns of duplicated id & not-oldest mark.
+  GROUPED_FILE_PATHS_LIST_WITH_DUPLICATED_ID_CSV:
+    PATH: './results/file_paths_list_grouped_by_its_name_with_duplicated_id.csv'
+    ENCODING: 'utf-8'
+    # If True, eliminate unduplicated file paths from list.
+    ONLY_DUPLICATED: False
+    DUPLICATED_ID_COLUMN: 'duplicated_id'
+    NOT_OLDEST_COLUMN: 'not_oldest'
+
+  # An output TXT file containing not-oldest duplicated file paths.
+  NOT_OLDEST_IN_DUPLICATED_FILE_PATHS_LIST_TXT:
+    PATH: './results/not_oldest_in_duplicated_file_paths_list.txt'
+    ENCODING: 'utf-8'

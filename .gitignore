@@ -1,0 +1,11 @@
+/__pycache__
+
+/configs/*
+!/configs/find_duplicated_images.yaml
+!/configs/group_file_paths_list_by_its_name.yaml
+
+/data/*
+!/data/.gitkeep
+
+/results/*
+!/results/.gitkeep

@@ -1,0 +1,26 @@
+## configuration file for "group_file_paths_list_by_its_name.py" ##
+# NOTE: All fields are required.
+
+INPUT:
+
+  # An input CSV file with a column of file paths.
+  FILE_PATHS_LIST_CSV:
+    PATH: './data/file_paths_list.csv'
+    ENCODING: 'utf-8'
+    FILE_PATHS_LIST_COLUMN: 'file_paths'
+
+PROCESS:
+
+  # Minimum number of characters for group name. 
+  MIN_GROUP_NAME_LENGTH: 6
+
+OUTPUT:
+
+  # An output CSV file with columns of group & file name.
+  FILE_PATHS_LIST_GROUPED_BY_ITS_NAME_CSV:
+    PATH: './results/file_paths_list_grouped_by_its_name.csv'
+    ENCODING: 'utf-8'
+    # If True, sort by group and eliminate ungrouped file paths from list.
+    ONLY_GROUPED: True
+    GROUP_COLUMN: 'group'
+    FILE_NAME_COLUMN: 'file_name'
