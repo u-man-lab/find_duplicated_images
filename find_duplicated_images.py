@@ -14,6 +14,7 @@ from pillow_heif import register_heif_opener
 from pydantic import (
     BaseModel,
     ConfigDict,
+    Field,
     FilePath,
     NewPath,
     StrictBool,
@@ -157,6 +158,8 @@ class GroupedFilePathsListWithDuplicatedIdCsvConfig(PathEncodingConverterMixin, 
     Attributes:
         PATH: Path to a new output CSV file.
         ENCODING: Encoding to use when writing the CSV.
+        NOT_OLDEST_MARK_STRING (optional):
+            Marking string for "NOT_OLDEST_COLUMN" below (1 length at least). Default to "X".
         ONLY_DUPLICATED: If True, eliminate unduplicated file paths from list.
         DUPLICATED_ID_COLUMN: Column name for duplicated id in group.
         NOT_OLDEST_COLUMN: Column name for whether file is not oldest in duplicates.
@@ -165,6 +168,7 @@ class GroupedFilePathsListWithDuplicatedIdCsvConfig(PathEncodingConverterMixin, 
 
     PATH: NewPath  # Must not exist & parent must exist
     ENCODING: EncodingStr
+    NOT_OLDEST_MARK_STRING: StrictStr = Field('X', min_length=1)
     ONLY_DUPLICATED: StrictBool
     DUPLICATED_ID_COLUMN: StrictStr
     NOT_OLDEST_COLUMN: StrictStr
@@ -827,7 +831,10 @@ def __find_duplicated_images():
             index=processing_df.index,
         )
         processing_df[output_csv_config.NOT_OLDEST_COLUMN] = pd.Series(
-            [info['not_oldest'] for info in image_duplication_info_list],
+            [
+                output_csv_config.NOT_OLDEST_MARK_STRING if info['not_oldest'] else ''
+                for info in image_duplication_info_list
+            ],
             index=processing_df.index,
         )
 
@@ -869,7 +876,10 @@ def __find_duplicated_images():
         logger.exception(f'Failed to write the CSV "{output_csv_config.PATH}".')
         sys.exit(1)
 
-    is_not_oldest_series = processing_df[output_csv_config.NOT_OLDEST_COLUMN]
+    is_not_oldest_series = (
+        processing_df[output_csv_config.NOT_OLDEST_COLUMN]
+        == output_csv_config.NOT_OLDEST_MARK_STRING
+    )
     lines_to_write = processing_df.loc[
         is_not_oldest_series, source_csv_config.FILE_PATHS_LIST_COLUMN
     ].tolist()

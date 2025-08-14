@@ -126,9 +126,8 @@ It supports detection of duplicates even when images are rotated or proportional
 The output includes:
 - **A CSV file**: The following columns are appended to the input CSV.
    - Duplicated id: Id of duplicates group in each group.
-   - Not-oldest mark: Whether the file is not oldest in each duplicates.  
-      (The oldest file can be considered an original image in duplicates.)
-- **A TXT file**: List of images which are not considered an original.
+   - Not-oldest mark: Whether the file is not oldest in each duplicates. (The oldest file can be considered an original image in duplicates.) If there are multiple oldest files within a duplicate group, the file at the top of the input CSV file will be considered the oldest.
+- **A TXT file**: List of images which are not considered an original. It is exactly the same as the list of file paths marked "not-oldest" in the CSV file.
 
 For not-oldest marking, serial datetime information for the image files is necessary.  
 If you do not have, you can obtain it using `extract_image_taken_datetime.py` in the repository below before running this script.  
@@ -184,8 +183,8 @@ The resulting CSV will be like:
 
 ```
 file_paths,datetime_tag_by_exiftool,datetime_local_unix,group,file_name,duplicated_id,not_oldest
-/path1/animal928-img600x380-1320574493ftqrpo80714.jpg,1330865697.000000,animal928-img600x380-1320574493ftqrpo80714,animal928-img600x380-1320574493ftqrpo80714.jpg,1,True
-/path2/animal928-img600x380-1320574493ftqrpo80714.jpg,1330865688.000000,animal928-img600x380-1320574493ftqrpo80714,animal928-img600x380-1320574493ftqrpo80714.jpg,1,False
+/path1/animal928-img600x380-1320574493ftqrpo80714.jpg,1330865697.000000,animal928-img600x380-1320574493ftqrpo80714,animal928-img600x380-1320574493ftqrpo80714.jpg,1,X
+/path2/animal928-img600x380-1320574493ftqrpo80714.jpg,1330865688.000000,animal928-img600x380-1320574493ftqrpo80714,animal928-img600x380-1320574493ftqrpo80714.jpg,1,
 :
 ```
 

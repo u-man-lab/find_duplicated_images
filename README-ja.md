@@ -127,9 +127,8 @@ file_paths,group,file_name
 出力には以下の内容が含まれます。:
 - **CSVファイル**: 入力されたCSVファイルに以下の列が追加されます。  
    - 重複ID: 各グループ内の重複写真のグループID。  
-   - 「not-oldest」マーク: 各重複グループ内でファイルが最古でないかどうか。  
-      （最古のファイルは重複写真の中のオリジナル写真であると考えられます。）
-- **TXTファイル**: オリジナル写真とみなされない複製写真のリスト。
+   - 「not-oldest」マーク: 各重複グループ内でファイルが最古でないかどうか。（最古のファイルは重複写真の中のオリジナル写真であると考えられます。）重複グループ内で最古のファイルが複数ある場合は、入力されたCSVファイルにおいて最も上にあるファイルが最古であるとみなされます。
+- **TXTファイル**: オリジナル写真とみなされない複製写真のファイルパス一覧。CSVファイルの「not-oldest」マークが付いているファイルパス一覧と全く同一です。
 
 「not-oldest」マークを付けるために、写真ファイルの撮影日時（文字列ではなくUNIXなどの連続値）が必要です。  
 撮影日時情報がなければ、このスクリプトを実行する前に、以下のリポジトリにある`extract_image_taken_datetime.py`を実行することで取得できます。  
@@ -186,8 +185,8 @@ python ./find_duplicated_images.py ./configs/find_duplicated_images.yaml
 
 ```
 file_paths,datetime_local_unix,group,file_name,duplicated_id,not_oldest
-/path1/animal928-img600x380-1320574493ftqrpo80714.jpg,1330865697.000000,animal928-img600x380-1320574493ftqrpo80714,animal928-img600x380-1320574493ftqrpo80714.jpg,1,True
-/path2/animal928-img600x380-1320574493ftqrpo80714.jpg,1330865688.000000,animal928-img600x380-1320574493ftqrpo80714,animal928-img600x380-1320574493ftqrpo80714.jpg,1,False
+/path1/animal928-img600x380-1320574493ftqrpo80714.jpg,1330865697.000000,animal928-img600x380-1320574493ftqrpo80714,animal928-img600x380-1320574493ftqrpo80714.jpg,1,X
+/path2/animal928-img600x380-1320574493ftqrpo80714.jpg,1330865688.000000,animal928-img600x380-1320574493ftqrpo80714,animal928-img600x380-1320574493ftqrpo80714.jpg,1,
 :
 ```
 

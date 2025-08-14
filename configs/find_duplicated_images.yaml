@@ -17,6 +17,8 @@ OUTPUT:
   GROUPED_FILE_PATHS_LIST_WITH_DUPLICATED_ID_CSV:
     PATH: './results/file_paths_list_grouped_by_its_name_with_duplicated_id.csv'
     ENCODING: 'utf-8'
+    # (optional) Marking string for "NOT_OLDEST_COLUMN" below (1 length at least). Default to "X".
+    NOT_OLDEST_MARK_STRING: 'X'
     # If True, eliminate unduplicated file paths from list.
     ONLY_DUPLICATED: False
     DUPLICATED_ID_COLUMN: 'duplicated_id'
