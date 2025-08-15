@@ -21,6 +21,6 @@ OUTPUT:
     PATH: './results/file_paths_list_grouped_by_its_name.csv'
     ENCODING: 'utf-8'
     # If True, sort by group and eliminate ungrouped file paths from list.
-    ONLY_GROUPED: True
+    ONLY_GROUPED: true
     GROUP_COLUMN: 'group'
     FILE_NAME_COLUMN: 'file_name'
