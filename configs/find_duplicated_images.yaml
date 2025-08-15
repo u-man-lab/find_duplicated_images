@@ -19,7 +19,7 @@ OUTPUT:
     ENCODING: 'utf-8'
     # (optional) Marking string for "NOT_OLDEST_COLUMN" below (1 length at least). Default to "X".
     NOT_OLDEST_MARK_STRING: 'X'
-    # If True, eliminate unduplicated file paths from list.
+    # If true, eliminate unduplicated file paths from list.
     ONLY_DUPLICATED: false
     DUPLICATED_ID_COLUMN: 'duplicated_id'
     NOT_OLDEST_COLUMN: 'not_oldest'
