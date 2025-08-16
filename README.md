@@ -8,6 +8,10 @@ This repository contains two main Python scripts designed to help deduplicate im
 1. The first script, [`group_file_paths_list_by_its_name.py`](#1-group_file_paths_list_by_its_namepy), groups image file paths based on similarities in their file names.
 1. The second script, [`find_duplicated_images.py`](#2-find_duplicated_imagespy), analyzes images within predefined groups and detects visually duplicated files, even if they are rotated or resized.
 
+### Disclaimer
+The developer assumes no responsibility for any issues that may arise if you delete files based on the duplicate image lists produced by these scripts.  
+It is strongly recommended that you manually review the generated CSV outputs and visually confirm that several of the detected duplicates are indeed copies of the original images before taking any irreversible actions such as file deletion.
+
 ---
 
 ## License & Developer
