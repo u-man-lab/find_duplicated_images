@@ -91,7 +91,7 @@ python ./group_file_paths_list_by_its_name.py ./configs/group_file_paths_list_by
 2025-08-14 14:00:22,504 [INFO] __main__: Writing CSV file "results/file_paths_list_grouped_by_its_name.csv"...
 2025-08-14 14:00:23,134 [INFO] __main__: "group_file_paths_list_by_its_name.py" done!
 ```
-（参考までに、33,753ファイルの処理に約3分40秒かかりました。）
+参考までに、33,753ファイルの処理に約3分40秒かかりました。Synology DS218（Realtek RTD1296、4コア 1.4 GHz、2GB DDR4）に、2×4TB WD Red（SMR）をRAID1で構成したNAS上で実行しました。
 
 生成されるCSVは次のような形式になります。:
 
@@ -183,7 +183,7 @@ python ./find_duplicated_images.py ./configs/find_duplicated_images.yaml
 2025-08-14 02:57:13,670 [INFO] __main__: Writing TXT file "results/not_oldest_in_duplicated_file_paths_list.txt"...
 2025-08-14 02:57:13,676 [INFO] __main__: "find_duplicated_images.py" done!
 ```
-（参考までに、6,910グループに分割された15,956ファイルの処理に約3時間11分かかりました。）
+参考までに、6,910グループに分割された15,956ファイルの処理に約3時間11分かかりました。Synology DS218（Realtek RTD1296、4コア 1.4 GHz、2GB DDR4）に、2×4TB WD Red（SMR）をRAID1で構成したNAS上で実行しました。
 
 生成されるCSVファイルは次のような形式になります。:
 

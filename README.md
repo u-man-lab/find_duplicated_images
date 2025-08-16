@@ -90,7 +90,7 @@ On success, stderr will include logs similar to:
 2025-08-14 14:00:22,504 [INFO] __main__: Writing CSV file "results/file_paths_list_grouped_by_its_name.csv"...
 2025-08-14 14:00:23,134 [INFO] __main__: "group_file_paths_list_by_its_name.py" done!
 ```
-(For reference, it took about 3m40s to process 33,753 files.)
+For reference, it took about 3m40s to process 33,753 files. Run on Synology DS218 (Realtek RTD1296, 4-core 1.4 GHz, 2GB DDR4) with 2×4TB WD Red (SMR) in RAID1.
 
 The resulting CSV will be like:
 
@@ -181,7 +181,7 @@ On success, stderr will include logs similar to:
 2025-08-14 02:57:13,670 [INFO] __main__: Writing TXT file "results/not_oldest_in_duplicated_file_paths_list.txt"...
 2025-08-14 02:57:13,676 [INFO] __main__: "find_duplicated_images.py" done!
 ```
-(For reference, it took about 3h11m to process 15,956 files grouped in 6,910 groups.)
+For reference, it took about 3h11m to process 15,956 files grouped in 6,910 groups. Run on Synology DS218 (Realtek RTD1296, 4-core 1.4 GHz, 2GB DDR4) with 2×4TB WD Red (SMR) in RAID1.
 
 The resulting CSV will be like:
 
