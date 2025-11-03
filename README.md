@@ -19,6 +19,9 @@ It is strongly recommended that you manually review the generated CSV outputs an
 - **License**: See [`LICENSE`](./LICENSE) in this repository.
 - **Developer**: U-MAN Lab. ([https://u-man-lab.com/](https://u-man-lab.com/))
 
+★The scripts in this repository are explained in the following article (in Japanese).★  
+[[Python] 大量の写真ファイルから複製写真のみをピックアップする。 | U-MAN Lab.](https://u-man-lab.com/find-duplicated-images-by-python)
+
 ---
 
 ## 1. `group_file_paths_list_by_its_name.py`

@@ -19,6 +19,9 @@
 - **ライセンス**: このリポジトリ内の[`LICENSE`](./LICENSE)を参照してください。
 - **開発者**: U-MAN Lab. ([https://u-man-lab.com/](https://u-man-lab.com/))
 
+★このリポジトリのスクリプトについて、以下の記事で解説しています。★  
+[[Python] 大量の写真ファイルから複製写真のみをピックアップする。 | U-MAN Lab.](https://u-man-lab.com/find-duplicated-images-by-python)
+
 ---
 
 ## 1. `group_file_paths_list_by_its_name.py`
