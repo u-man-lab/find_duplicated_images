@@ -141,6 +141,9 @@ file_paths,group,file_name
 撮影日時情報がなければ、このスクリプトを実行する前に、以下のリポジトリにある`extract_image_taken_datetime.py`を実行することで取得できます。  
 https://github.com/u-man-lab/extract_image_taken_datetime/tree/main
 
+また、本スクリプトにより取得したTXTファイル（複製写真のファイルパス一覧）を元に、複製写真を一括削除する場合は、以下のリポジトリにある`move_target_files_into_a_folder.py`をぜひ活用ください。複製写真をまとめて一時フォルダに移動でき、最終確認しながら削除することができます。  
+https://github.com/u-man-lab/move_target_files_into_a_folder/tree/main
+
 ---
 
 ### 2.2. 実行方法

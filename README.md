@@ -140,6 +140,9 @@ For not-oldest marking, serial datetime information for the image files is neces
 If you do not have, you can obtain it using `extract_image_taken_datetime.py` in the repository below before running this script.  
 https://github.com/u-man-lab/extract_image_taken_datetime/tree/main
 
+Additionally, to bulk delete duplicate photos based on the TXT file (list of duplicate image file paths) obtained by this script, please utilize `move_target_files_into_a_folder.py` from the repository below. This script allows you to move duplicate photos to a temporary folder in bulk, enabling deletion while performing a final review.  
+https://github.com/u-man-lab/move_target_files_into_a_folder/tree/main
+
 ---
 
 ### 2.2. Usage
