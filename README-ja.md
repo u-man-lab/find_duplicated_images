@@ -20,7 +20,7 @@
 - **開発者**: U-MAN Lab. ([https://u-man-lab.com/](https://u-man-lab.com/))
 
 ★このリポジトリのスクリプトについて、以下の記事で解説しています。★  
-[[Python] 大量の写真ファイルから複製写真のみをピックアップする。 | U-MAN Lab.](https://u-man-lab.com/find-duplicated-images-by-python)
+[[Python] 大量の写真ファイルから複製写真のみをピックアップする。 | U-MAN Lab.](https://u-man-lab.com/find-duplicated-images-by-python/?utm_source=github&utm_medium=social&utm_campaign=find_duplicated_images)
 
 ---
 
