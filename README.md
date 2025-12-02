@@ -128,16 +128,22 @@ For full details, see the script source. Common errors include:
 ### 2.1. Description
 
 [`find_duplicated_images.py`](./find_duplicated_images.py) reads a CSV file containing grouped image file paths and detects visually duplicated images within each group.  
-It supports detection of duplicates even when images are rotated or proportionally resized, using perceptual hashing.
+It supports detection of duplicates even when images are rotated or proportionally resized, using perceptual hashing.  
+NOTE: It only supports photo files and cannot detect duplicate video files. Additionally, duplicate photos converted to different formats, such as HEIC to JPG, may not be detected.
 
 The output includes:
-- **A CSV file**: The following columns are appended to the input CSV.
+- **A CSV file**: The following columns are appended to the input CSV. Original photos that are not duplicates will have both column values blank.
    - Duplicated id: Id of duplicates group in each group.
    - Not-oldest mark: Whether the file is not oldest in each duplicates. (The oldest file can be considered an original image in duplicates.) If there are multiple oldest files within a duplicate group, the file at the top of the input CSV file will be considered the oldest.
 - **A TXT file**: List of images which are not considered an original. It is exactly the same as the list of file paths marked "not-oldest" in the CSV file.
 
 For not-oldest marking, serial datetime information for the image files is necessary.  
 If you do not have, you can obtain it using `extract_image_taken_datetime.py` in the repository below before running this script.  
+https://github.com/u-man-lab/extract_image_taken_datetime/tree/main
+
+To batch process photo files with similar filenames and input them as a group, you can utilize the other script: [`group_file_paths_list_by_its_name.py`](#1-group_file_paths_list_by_its_namepy).  
+On the other hand, if duplicate photos with completely different filenames exist, you may be able to detect them by specifying unique metadata for each photo (such as `EXIF:UserComment`, `EXIF:DateTimeOriginal`, or `MakerNotes:PhotoIdentifier`, etc.) as the group name.  
+You can retrieve the metadata for each photo file by running `read_exiftool_values_of_files.py` from the repository below.  
 https://github.com/u-man-lab/extract_image_taken_datetime/tree/main
 
 Additionally, to bulk delete duplicate photos based on the TXT file (list of duplicate image file paths) obtained by this script, please utilize `move_target_files_into_a_folder.py` from the repository below. This script allows you to move duplicate photos to a temporary folder in bulk, enabling deletion while performing a final review.  

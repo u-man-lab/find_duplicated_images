@@ -129,16 +129,22 @@ file_paths,group,file_name
 ### 2.1. 概要
 
 [`find_duplicated_images.py`](./find_duplicated_images.py)は、グループ化された写真ファイルのパスを含むCSVファイルを読み込み、各グループ内で複製写真を検出します。  
-「perceptual hash」を使用して、写真の回転・リサイズにも対応しています。
+「perceptual hash」を使用して、写真の回転・リサイズにも対応しています。  
+※写真ファイルのみに対応していて、動画ファイルの複製を検出することはできません。また、HEIC->JPGなど、異なるフォーマットに変換された複製写真は検出できない場合があります。
 
 出力には以下の内容が含まれます。:
-- **CSVファイル**: 入力されたCSVファイルに以下の列が追加されます。  
+- **CSVファイル**: 入力されたCSVファイルに以下の列が追加されます。重複写真でないオリジナルの写真は、いずれの列の値も空となります。
    - 重複ID: 各グループ内の重複写真のグループID。  
    - 「not-oldest」マーク: 各重複グループ内でファイルが最古でないかどうか。（最古のファイルは重複写真の中のオリジナル写真であると考えられます。）重複グループ内で最古のファイルが複数ある場合は、入力されたCSVファイルにおいて最も上にあるファイルが最古であるとみなされます。
 - **TXTファイル**: オリジナル写真とみなされない複製写真のファイルパス一覧。CSVファイルの「not-oldest」マークが付いているファイルパス一覧と全く同一です。
 
 「not-oldest」マークを付けるために、写真ファイルの撮影日時（文字列ではなくUNIXなどの連続値）が必要です。  
 撮影日時情報がなければ、このスクリプトを実行する前に、以下のリポジトリにある`extract_image_taken_datetime.py`を実行することで取得できます。  
+https://github.com/u-man-lab/extract_image_taken_datetime/tree/main
+
+ファイル名が似ている写真ファイルをまとめて、グループとして入力するためには、もう一つのスクリプトである[`group_file_paths_list_by_its_name.py`](#1-group_file_paths_list_by_its_namepy)が活用できます。  
+一方で、ファイル名が全く異なる複製写真が存在する場合は、各写真固有のメタデータ（`EXIF:UserComment`・`EXIF:DateTimeOriginal`・`MakerNotes:PhotoIdentifier`など）をグループ名に指定することで、検出できる可能性があります。  
+以下のリポジトリにある`read_exiftool_values_of_files.py`を実行することで、各写真ファイルのメタデータを取得できます。  
 https://github.com/u-man-lab/extract_image_taken_datetime/tree/main
 
 また、本スクリプトにより取得したTXTファイル（複製写真のファイルパス一覧）を元に、複製写真を一括削除する場合は、以下のリポジトリにある`move_target_files_into_a_folder.py`をぜひ活用ください。複製写真をまとめて一時フォルダに移動でき、最終確認しながら削除することができます。  
