@@ -684,39 +684,36 @@ class RotatedAndResizedImage:
 
 
 def __mark_not_oldest(
-    groups_tuple: tuple[str, ...], datetime_serials_tuple: tuple[float, ...]
+    cluster_ids_tuple: tuple[str, ...], datetime_serials_tuple: tuple[float, ...]
 ) -> tuple[bool, ...]:
-    """Marks items that are not the oldest within their group.
+    """Marks items that are not the oldest within their cluster.
 
     Args:
-        groups_tuple: Group identifiers for each item.
+        cluster_ids_tuple: Cluster identifiers for each item.
         datetime_serials_tuple: Corresponding serialized datetime values.
 
     Returns:
-        tuple[bool, ...]: True if item is not the oldest in its group, False otherwise.
+        tuple[bool, ...]: True if item is not the oldest in its cluster, False otherwise.
 
     Raises:
         ValueError: If input tuples have different lengths.
     """
 
-    if len(groups_tuple) != len(datetime_serials_tuple):
+    if len(cluster_ids_tuple) != len(datetime_serials_tuple):
         raise ValueError('Length of args must be the same.')
 
-    not_oldest = [True] * len(groups_tuple)
+    not_oldest = [True] * len(cluster_ids_tuple)
 
-    group_to_indices: dict[str, list[int]] = {}
-    for i, group in enumerate(groups_tuple):
-        # Blank('') group is always the oldest
-        if group == '':
+    cluster_id_to_indices: dict[str, list[int]] = {}
+    for i, cluster_id in enumerate(cluster_ids_tuple):
+        # Blank('') cluster_id is always the oldest
+        if cluster_id == '':
             not_oldest[i] = False
             continue
 
-        if group not in group_to_indices:
-            group_to_indices[group] = [i]
-        else:
-            group_to_indices[group].append(i)
+        cluster_id_to_indices.setdefault(cluster_id, []).append(i)
 
-    for group, indices in group_to_indices.items():
+    for cluster_id, indices in cluster_id_to_indices.items():
         if len(indices) == 1:
             not_oldest[indices[0]] = False
             continue
