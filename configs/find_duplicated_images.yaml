@@ -4,6 +4,7 @@
 INPUT:
 
   # An input CSV file with columns of file paths and group and serialized datetime.
+  # For files in rows where GROUP_COLUMN value is empty, they are always treated as original photos.
   GROUPED_FILE_PATHS_LIST_CSV:
     PATH: './data/file_paths_list_grouped_by_its_name.csv'
     ENCODING: 'utf-8'

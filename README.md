@@ -163,7 +163,8 @@ Before running, ensure you have already:
 
 #### (1) Prepare a CSV file for input
 Prepare a CSV file containing the paths of photo or video files on the PC.  
-The group and serial datetime of the files is also necessary in other columns.
+The group and serial datetime of the files is also necessary in other columns.  
+For files in rows where the group column value is empty, they are always treated as original photos (the output duplicated id and not-oldest mark are always empty).
 
 #### (2) Edit the configuration file
 

@@ -756,6 +756,17 @@ def __get_image_duplication_info_list(
 
         logger.info(f'Processing [{counter + 1}/{total_groups}]: group "{group}"...')
 
+        if group == '':
+            for i in indices_in_group:
+                image_duplication_info_list[i] = {
+                    'duplicated_id': '',
+                    'not_oldest': False,
+                }
+            logger.warning(
+                'Skipped group "". This script always assumes that photos in the group "" are unique.'
+            )
+            continue
+
         file_paths_in_group = tuple(file_paths_list[i] for i in indices_in_group)
         datetime_serial_in_group = tuple(datetime_serial_list[i] for i in indices_in_group)
 
